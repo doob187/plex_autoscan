@@ -5,6 +5,7 @@
 *.iws
 # IntelliJ
 /out/
+/system
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
