@@ -152,7 +152,7 @@ class Config(object):
         else:
             cfg['SERVER_PATH_MAPPINGS'] = {
                 '/mnt/unionfs/': [
-                    '/home/user/media/fused/'
+                    '/mnt/unionfs/'
                 ]
             }
         # add example file exist path mappings
@@ -164,8 +164,8 @@ class Config(object):
             }
         else:
             cfg['SERVER_FILE_EXIST_PATH_MAPPINGS'] = {
-                '/home/user/rclone/': [
-                    '/data/'
+                '/mnt/unionfs/': [
+                    '/mnt/unionfs/'
                 ]
             }
         # add example server ignore list
@@ -173,15 +173,16 @@ class Config(object):
         # add example allowed scan paths to google
         if os.name == 'nt':
             cfg['GOOGLE']['ALLOWED']['FILE_PATHS'] = [
-                "My Drive\\Media\\Movies\\",
-                "My Drive\\Media\\TV\\",
-                "My Drive\\Media\\4K\\"
+                "My Drive\\movies\\",
+                "My Drive\\tv\\",
+                "My Drive\\tv-4k\\"
             ]
         else:
             cfg['GOOGLE']['ALLOWED']['FILE_PATHS'] = [
-                "My Drive/Media/Movies/",
-                "My Drive/Media/TV/",
-                "My Drive/Media/4K/"
+                "My Drive/movies/",
+                "My Drive/tv/",
+                "My Drive/tv-4k/",
+                "My Drive/movies-4k/"
             ]
         # add example scan extensions to google
         cfg['GOOGLE']['ALLOWED']['FILE_EXTENSIONS'] = True
