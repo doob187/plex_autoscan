@@ -60,7 +60,7 @@ class GoogleDriveManager:
 
     def get_changes(self):
         using_teamdrives = False if len(self.drives) <= 1 else True
-        for drive_type, drive in self.drives.items():
+        for drive_type, drive in list(self.drives.items()):
             if using_teamdrives:
                 logger.info("Retrieving changes from drive: %s", drive_type)
             drive.get_changes()
@@ -74,11 +74,11 @@ class GoogleDriveManager:
         return False
 
     def set_callbacks(self, callbacks):
-        for drive_name, drive in self.drives.items():
+        for drive_name, drive in list(self.drives.items()):
             drive.set_callbacks(callbacks)
 
     def build_caches(self):
-        for drive_type, drive in self.drives.items():
+        for drive_type, drive in list(self.drives.items()):
             logger.info("Building cache for drive: %s", drive_type)
             drive.show_cache_logs = False
             drive.set_page_token(1)
@@ -122,7 +122,7 @@ class GoogleDrive:
         return
 
     def set_callbacks(self, callbacks={}):
-        for callback_type, callback_func in callbacks.items():
+        for callback_type, callback_func in list(callbacks.items()):
             self.callbacks[callback_type] = callback_func
         return
 
