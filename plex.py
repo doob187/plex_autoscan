@@ -26,10 +26,10 @@ def show_detailed_sections_info(conf):
             print("==============")
             for document in root.findall("Directory"):
                 print('')
-                print(document.get('key') + ') ' + document.get('title'))
+                print((document.get('key') + ') ' + document.get('title')))
                 dashes_length = len(document.get('key') + ') ' + document.get('title'))
-                print('-' * dashes_length)
-                print("\n".join([os.path.join(k.get('path'), '') for k in document.findall("Location")]))
+                print(('-' * dashes_length))
+                print(("\n".join([os.path.join(k.get('path'), '') for k in document.findall("Location")])))
     except Exception as e:
         logger.exception("Issue encountered when attempting to list detailed sections info.")
 def scan(config, lock, path, scan_for, section, scan_type, resleep_paths, scan_title=None, scan_lookup_type=None,
