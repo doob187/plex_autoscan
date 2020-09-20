@@ -89,6 +89,5 @@ def queued_count():
         logger.exception("Exception retrieving queued count: ")
     return 0
 
-
 # Init
 init(database, db_path)
