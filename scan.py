@@ -123,7 +123,7 @@ def process_google_changes(items_added):
     # process items added
     if not items_added:
         return True
-    for file_id, file_paths in items_added.items():
+    for file_id, file_paths in list(items_added.items()):
         for file_path in file_paths:
             if file_path in new_file_paths:
                 continue
@@ -415,7 +415,7 @@ if __name__ == "__main__":
     print("")
 
     f = Figlet(font='slant', width=100)
-    print(f.renderText('Plex Autoscan'))
+    print((f.renderText('Plex Autoscan')))
 
     logger.info("""
 #########################################################################
@@ -448,7 +448,7 @@ if __name__ == "__main__":
             logger.info("Visit the link below and paste the authorization code: ")
             logger.info(google.get_auth_link())
             logger.info("Enter authorization code: ")
-            auth_code = input()
+            auth_code = eval(input())
             logger.debug("auth_code: %r", auth_code)
 
             # Exchange authorization code
