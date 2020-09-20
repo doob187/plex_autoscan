@@ -3,11 +3,10 @@ try:
     import queue
 except ImportError:
     # Fallback to the Python 2 Queue module
-    import Queue as queue
+    import queue as queue
 import datetime
 import copy
 import threading
-
 
 class PriorityLock:
     def __init__(self):
@@ -39,7 +38,6 @@ class PriorityLock:
         else:
             event.set()
         self._mutex.release()
-
 
 class Thread:
     def __init__(self):
