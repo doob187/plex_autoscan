@@ -12,8 +12,7 @@ class Singleton(type):
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
-class Config(object):
-    __metaclass__ = Singleton
+class Config(object, metaclass=Singleton):
     base_config = {
         'PLEX_USER': 'plex',
         'PLEX_SCANNER': '/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner',
@@ -213,7 +212,7 @@ class Config(object):
         sub_upgraded = False
         merged = copy(settings2)
         if isinstance(settings1, dict):
-            for k, v in settings1.items():
+            for k, v in list(settings1.items()):
                 # missing k
                 if k not in settings2:
                     merged[k] = v
@@ -242,7 +241,7 @@ class Config(object):
     def upgrade_settings(self, currents):
         fields_env = {}
         # ENV gets priority: ENV > config.json
-        for name, data in self.base_config.items():
+        for name, data in list(self.base_config.items()):
             if name in os.environ:
                 # Use JSON decoder to get same behaviour as config file
                 fields_env[name] = json.JSONDecoder().decode(os.environ[name])
@@ -279,7 +278,7 @@ class Config(object):
             exit(0)
     def get_settings(self):
         setts = {}
-        for name, data in self.base_settings.items():
+        for name, data in list(self.base_settings.items()):
             # Argrument priority: cmd < environment < default
             try:
                 value = None
