@@ -448,7 +448,7 @@ if __name__ == "__main__":
             logger.info("Visit the link below and paste the authorization code: ")
             logger.info(google.get_auth_link())
             logger.info("Enter authorization code: ")
-            auth_code = eval(input())
+            auth_code = input()
             logger.debug("auth_code: %r", auth_code)
 
             # Exchange authorization code
